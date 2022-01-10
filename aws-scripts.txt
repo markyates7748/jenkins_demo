@@ -11,4 +11,7 @@ yum install jenkins java-1.8.0-openjdk-devel -y
 systemctl daemon-reload
 systemctl start jenkins
 
+get jenkins initial password:
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
 pipeline:
