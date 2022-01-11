@@ -19,3 +19,18 @@ s3 publisher
 set maven version at Manage Jenkins > Global Tool Configuration > Maven Installations
 
 pipeline:
+pipeline {
+    agent any
+    tools {
+        maven 'Apache Maven 3.8.4'
+    }
+    stage('checkout'){
+        git 'https://github.com/markyates7748/jenkins_demo.git'
+    }
+    stage('build'){
+        sh 'mvn clean package'
+    }
+    stage('archive'){
+        s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'myatesJenkins', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: true, selectedRegion: 'us-west-1', showDirectlyInBrowser: false, sourceFile: 'target/*.jar', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: '', userMetadata: []
+    }
+}
