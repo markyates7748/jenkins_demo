@@ -17,6 +17,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 get necessary jenkins plugins:
 s3 publisher
 set maven version at Manage Jenkins > Global Tool Configuration > Maven Installations
+set bucket info at Manage Jenkins > Configure System > Amazon s3 profiles
 
 pipeline:
 pipeline {
